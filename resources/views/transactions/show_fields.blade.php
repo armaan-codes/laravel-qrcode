@@ -1,25 +1,43 @@
-<!-- Id Field -->
+<!-- Qrcode Id Field -->
 <div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $transaction->id !!}</p>
+    {!! Form::label('qrcode_id', 'Product Name:') !!}
+    <p>
+        <a href="{!! $transaction->qrcode->product_url !!}">
+            <b>{!! $transaction->qrcode->product_name !!}</b>
+        </a>
+    </p>
+</div>
+
+<!-- Amount Field -->
+<div class="form-group">
+    {!! Form::label('amount', 'Amount:') !!}
+    <p>${!! $transaction->qrcode->amount !!}</p>
+</div>
+
+<!-- Buyer Name Field -->
+<div class="form-group">
+    {!! Form::label('buyer_name', 'Buyer Name:') !!}
+    <p>
+        <a href="{{ route('users.show', [ 'id' => $transaction->user->id ]) }}">{!! $transaction->user->name !!}</a> | <a href="mailto:{!! $transaction->user->email !!}">{!! $transaction->user->email !!}</a>
+    </p>
 </div>
 
 <!-- User Id Field -->
 <div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{!! $transaction->user_id !!}</p>
-</div>
-
-<!-- Qrcode Id Field -->
-<div class="form-group">
-    {!! Form::label('qrcode_id', 'Qrcode Id:') !!}
-    <p>{!! $transaction->qrcode_id !!}</p>
+    {!! Form::label('user_id', 'QRCode Owner Name:') !!}
+    <p>
+        <a href="{{ route('users.show', [ 'id' => $transaction->qrcode->user->id ]) }}">
+            {!! $transaction->qrcode->user->name !!}
+        </a>
+    </p>
 </div>
 
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', 'Status:') !!}
-    <p>{!! $transaction->status !!}</p>
+    <p>
+        {!! $transaction->status !!}
+    </p>
 </div>
 
 <!-- Message Field -->
@@ -37,12 +55,5 @@
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $transaction->created_at !!}</p>
+    <p>{!! $transaction->created_at->format('D d, M, Y') !!}</p>
 </div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $transaction->updated_at !!}</p>
-</div>
-

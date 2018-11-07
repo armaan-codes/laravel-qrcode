@@ -1,9 +1,3 @@
-<!-- User Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Product Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('product_name', 'Product Name:') !!}
@@ -13,7 +7,7 @@
 <!-- Product Url Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('product_url', 'Product Url:') !!}
-    {!! Form::text('product_url', null, ['class' => 'form-control']) !!}
+    {!! Form::text('product_url', null, ['class' => 'form-control', 'placeholder' => 'https://']) !!}
 </div>
 
 <!-- Company Name Field -->
@@ -25,12 +19,12 @@
 <!-- Website Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('website', 'Website:') !!}
-    {!! Form::text('website', null, ['class' => 'form-control']) !!}
+    {!! Form::text('website', null, ['class' => 'form-control', 'placeholder' => 'https://']) !!}
 </div>
 
 <!-- Amount Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('amount', 'Amount:') !!}
+    {!! Form::label('amount', 'Amount ($):') !!}
     {!! Form::number('amount', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -40,23 +34,16 @@
     {!! Form::text('callback_url', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Qrcode Path Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('qrcode_path', 'Qrcode Path:') !!}
-    {!! Form::text('qrcode_path', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status', 'Status:') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('status', false) !!}
-        {!! Form::checkbox('status', '1', null) !!} 1
+        {!! Form::checkbox('status', '1', null) !!} Active
     </label>
 </div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('qrcodes.index') !!}" class="btn btn-default">Cancel</a>
 </div>

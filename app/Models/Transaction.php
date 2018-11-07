@@ -88,5 +88,15 @@ class Transaction extends Model
         
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    public function qrcode()
+    {
+        return $this->belongsTo('App\Models\Qrcode', 'qrcode_id', 'id');
+    }
+
     
 }

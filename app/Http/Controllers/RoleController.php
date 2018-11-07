@@ -57,6 +57,8 @@ class RoleController extends AppBaseController
     {
         $input = $request->all();
 
+        $input["name"] = title_case($request->input("name"));
+
         $role = $this->roleRepository->create($input);
 
         Flash::success('Role saved successfully.');

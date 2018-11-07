@@ -88,5 +88,20 @@ class User extends Model
         
     ];
 
+    public function qrcodes()
+    {
+        return $this->hasMany('App\Models\Qrcode', 'user_id', 'id');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany('App\Models\Transaction', 'user_id', 'id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role', 'role_id', 'id');
+    }
+
     
 }

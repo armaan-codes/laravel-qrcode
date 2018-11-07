@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Role;
 
 class UserController extends AppBaseController
 {
@@ -101,7 +102,11 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        foreach(Role::all() as $role) {
+            $roles[$role->id] = $role->name; 
+        }
+
+        return view('users.edit')->with('user', $user)->with('roles', $roles);
     }
 
     /**
